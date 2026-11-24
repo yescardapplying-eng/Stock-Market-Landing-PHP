@@ -5,8 +5,8 @@
 -- All Data Stored as Flexible Strings (VARCHAR / TEXT) to Prevent Type Errors
 -- ============================================================================
 
--- Table 1: Primary Leads Record (Client 2 Dedicated)
-CREATE TABLE IF NOT EXISTS `client2_leads` (
+-- Table 1: Primary Leads Record (Stock Market Dedicated)
+CREATE TABLE IF NOT EXISTS `stock_market_leads` (
     `id` BIGINT AUTO_INCREMENT PRIMARY KEY,
     `session_id` VARCHAR(100) NOT NULL UNIQUE,
     `lead_reference` VARCHAR(100) NOT NULL UNIQUE,
@@ -47,14 +47,14 @@ CREATE TABLE IF NOT EXISTS `client2_leads` (
     `updated_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     `completed_at` DATETIME NULL,
 
-    INDEX `idx_c2_leads_session_id` (`session_id`),
-    INDEX `idx_c2_leads_status` (`status`),
-    INDEX `idx_c2_leads_current_step` (`current_step`),
-    INDEX `idx_c2_leads_created_at` (`created_at`)
+    INDEX `idx_sm_leads_session_id` (`session_id`),
+    INDEX `idx_sm_leads_status` (`status`),
+    INDEX `idx_sm_leads_current_step` (`current_step`),
+    INDEX `idx_sm_leads_created_at` (`created_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Table 2: Question & Answer Interaction Logs (Client 2 Dedicated)
-CREATE TABLE IF NOT EXISTS `client2_assessment_interactions` (
+-- Table 2: Question & Answer Interaction Logs (Stock Market Dedicated)
+CREATE TABLE IF NOT EXISTS `stock_market_assessment_interactions` (
     `id` BIGINT AUTO_INCREMENT PRIMARY KEY,
     `session_id` VARCHAR(100) NOT NULL,
     `step_number` VARCHAR(20) NOT NULL DEFAULT '1',
@@ -66,8 +66,8 @@ CREATE TABLE IF NOT EXISTS `client2_assessment_interactions` (
     `user_agent` TEXT NULL,
     `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    INDEX `idx_c2_interactions_session_id` (`session_id`),
-    INDEX `idx_c2_interactions_step` (`step_number`),
-    INDEX `idx_c2_interactions_action` (`action_type`),
-    INDEX `idx_c2_interactions_created_at` (`created_at`)
+    INDEX `idx_sm_interactions_session_id` (`session_id`),
+    INDEX `idx_sm_interactions_step` (`step_number`),
+    INDEX `idx_sm_interactions_action` (`action_type`),
+    INDEX `idx_sm_interactions_created_at` (`created_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
